@@ -1,6 +1,4 @@
 flask
-firebase_admin
-PyPDF2
 requests
 gunicorn
 BeautifulSoup4

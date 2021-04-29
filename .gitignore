@@ -1,3 +1,5 @@
 ServiceAccountKey.json
 *.pyc
 __pycache__/
+districtStats.xml
+vaccineStats.xml
