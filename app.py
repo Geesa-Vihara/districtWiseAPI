@@ -33,25 +33,39 @@ def vaccineStats():
         root = tree.getroot()
         vaccineFill(root[0],vaccineList)         #Get district data
 
-    row = {'Covishield vaccine': vaccineList[1], 'Sinopharm Vaccine': vaccineList[2]}
+    row = {'Covishield Vaccine First Dose': vaccineList[1], 'Sinopharm Vaccine First Dose': vaccineList[2], 'Covishield Vaccine Second Dose': vaccineList[3], 'Sinopharm Vaccine Second Dose': vaccineList[4]}
     print(row)
     return jsonify(row), 200
 
 def vaccineFill(root,vaccineList): 
-    covidShield=0
-    sinopharm=0
+    fcovidShield=0
+    fsinopharm=0
+    scovidShield=0
+    ssinopharm=0
     for i in range(len(root)):
-        date=root[i].text        
-        if(date=='29. 01. 2021 - 25. 02. 2021 '):
-            for j in range(i,len(root),5):
-                if root[j].text is None:
-                    break
-                count1=root[j+2].text.strip().replace(',',"")
-                count2=root[j+4].text.strip().replace(',',"")
-                if(count1.isnumeric()):
-                    vaccineList[1]=root[j+2].text.strip()
-                if(count2.isnumeric()):
-                    vaccineList[2]=root[j+4].text.strip()  
+        for j in range(len(root[i])):
+            if root[i][j].text == "පළමු මාත්‍රාව - First Dose ":
+                x=i+2
+                for k in range(x,len(root),5):
+                    if root[k].text is None:
+                        break             
+                    count1=root[k+1].text.strip().replace(',',"")
+                    count2=root[k+3].text.strip().replace(',',"")
+                    if(count1.isnumeric()):
+                        vaccineList[1]=root[k+1].text.strip()
+                    if(count2.isnumeric()):
+                        vaccineList[2]=root[k+3].text.strip()     
+            elif root[i][j].text == "වදවන මාත්‍රාව - Second Dose":
+                x=i+3
+                for k in range(x,len(root),5):
+                    if root[k].text is None:
+                        break           
+                    count3=root[k+1].text.strip().replace(',',"")
+                    count4=root[k+3].text.strip().replace(',',"")
+                    if(count3.isnumeric()):
+                        vaccineList[3]=root[k+1].text.strip()
+                    if(count4.isnumeric()):
+                        vaccineList[4]=root[k+3].text.strip() 
 
 @app.route('/covid19/srilanka/districts', methods=['GET'])
 def districtStats(chunk_size=None):

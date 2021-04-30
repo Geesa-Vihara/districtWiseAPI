@@ -3,3 +3,4 @@ ServiceAccountKey.json
 __pycache__/
 districtStats.xml
 vaccineStats.xml
+disctrict.py
