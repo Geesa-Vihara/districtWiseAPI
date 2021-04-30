@@ -20,7 +20,7 @@ def vaccineStats():
     url = "https://www.epid.gov.lk/web/index.php?option=com_content&view=article&id=231&lang=en"
     html = http.request('GET', url)
     soup = BeautifulSoup(html.data,features="html.parser")
-    last_link = soup.find_all('a', href=True)[47]
+    last_link = soup.find_all('a', href=True)[46]
     url = "https://www.epid.gov.lk"+last_link['href']
     print(url)
     #Create the xml file
