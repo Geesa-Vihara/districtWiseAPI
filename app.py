@@ -12,7 +12,7 @@ app = Flask(__name__)
 @app.route('/covid19/srilanka/vaccines', methods=['GET'])
 def vaccineStats():
     #Create list to insert into CSV
-    vaccineList=[0]*3
+    vaccineList=[0]*5
     errorFag=0
 
     #Get the recently uploaded pdf url
