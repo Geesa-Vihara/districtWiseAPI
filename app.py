@@ -33,7 +33,7 @@ def vaccineStats():
         root = tree.getroot()
         vaccineFill(root[0],vaccineList)         #Get district data
 
-    row = {'Covishield Vaccine First Dose': vaccineList[1], 'Sinopharm Vaccine First Dose': vaccineList[2], 'Covishield Vaccine Second Dose': vaccineList[3], 'Sinopharm Vaccine Second Dose': vaccineList[4]}
+    row = {'Covishield_Vaccine_First_Dose': vaccineList[1], 'Sinopharm_Vaccine_First_Dose': vaccineList[2], 'Covishield_Vaccine_Second_Dose': vaccineList[3], 'Sinopharm_Vaccine_Second_Dose': vaccineList[4]}
     print(row)
     return jsonify(row), 200
 
