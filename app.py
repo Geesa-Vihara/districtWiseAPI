@@ -6,10 +6,14 @@ import xml_converter
 import requests
 from bs4 import BeautifulSoup
 import urllib3
+from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 @app.route('/covid19/srilanka/vaccines', methods=['GET'])
+@cross_origin()
 def vaccineStats():
     #Create list to insert into CSV
     vaccineList=[0]*5
@@ -68,6 +72,7 @@ def vaccineFill(root,vaccineList):
                         vaccineList[4]=root[k+3].text.strip() 
 
 @app.route('/covid19/srilanka/districts', methods=['GET'])
+@cross_origin()
 def districtStats(chunk_size=None):
     #Create list to insert into CSV
     distList=[0]*27
@@ -153,6 +158,7 @@ def districtFill(root,distList):
                 distList[26]=''.join((root[i+2].text).split())  
 
 @app.route('/')
+@cross_origin()
 def index():
     return "<h1>COVID-19 STATS API!</h1>"
 

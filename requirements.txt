@@ -3,3 +3,4 @@ requests
 gunicorn
 BeautifulSoup4
 urllib3
+flask_cors
